@@ -7,7 +7,7 @@ module instr_mem (
 
   // carrega o conteudo do arquivo para instr_mem
   initial begin
-    $readmemh("program.hex", memory);
+      $readmemh("programa.hex", memory);
   end
 
   // lê a instrução da memória
