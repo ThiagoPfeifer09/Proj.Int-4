@@ -1,11 +1,12 @@
 module if_stage (
     input  wire        clk,
     input  wire        rst,
-    input  wire [31:0] branch_target,
-    input  wire        branch_taken,
+    input  wire [31:0] branch_target, // endereço para onde o PC deve saltar em caso de branch
+    input  wire        branch_taken, // sinal que indica se o branch vai ser seguido
     output wire [31:0] pc_4,
     output wire [31:0] instr,
-    output reg  [31:0] if_id_pc_4,
+    // registradores usado para passar os valores para o ID
+    output reg  [31:0] if_id_pc_4, 
     output reg  [31:0] if_id_instr
 );
   wire [31:0] pc_current, pc_next;
