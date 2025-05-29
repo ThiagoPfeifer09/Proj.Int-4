@@ -1,6 +1,6 @@
 module instr_mem (
-    input  wire [31:0] addr,       // endereço de instrução (PC)
-    output wire [31:0] instr       // instrução lida
+    input  wire [31:0] addr,       // endereÃ§o de instruÃ§Ã£o (PC)
+    output wire [31:0] instr       // instruÃ§Ã£o lida
 );
   // RAM
   reg [31:0] memory [0:255];      
@@ -10,6 +10,6 @@ module instr_mem (
     $readmemh("program.hex", memory);
   end
 
-  // lê a instrução da memória
+  // lÃª a instruÃ§Ã£o da memÃ³ria
   assign instr = memory[addr[9:2]];  
 endmodule
