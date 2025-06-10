@@ -41,5 +41,4 @@ module if_stage (
       if_id_instr    <= instr;
     end
   end
-
 endmodule
