@@ -1,8 +1,8 @@
-// Módulo: data_memory (Memória de Dados)
+// Módulo: data_memory (Memória de Dados) - Versão Verilog-2001 Corrigida
 // Objetivo: Este módulo simula a memória de dados principal do processador.
 // É aqui que as instruções de load (leitura) e store (escrita) interagem
 // para buscar ou armazenar valores. O modelo implementa uma memória de 64 bytes,
-// síncrona para escrita e assíncrona para leitura.
+// síncrona para escrita e combinacional (assíncrona) para leitura.
 
 module data_memory(
     // --- Entradas ---
@@ -27,35 +27,22 @@ module data_memory(
 );
  
     // Declaração da memória: um array de 64 posições, onde cada posição armazena 8 bits (1 byte).
-    // Isso modela uma memória de 64 bytes, endereçável a byte.
     reg [7:0] mem [63:0];
     integer i;
  
     // Bloco de inicialização para SIMULAÇÃO.
     // ATENÇÃO: Blocos 'initial' NÃO SÃO SINTETIZÁVEIS para hardware real (FPGAs/ASICs).
-    // A inicialização de memória em hardware geralmente é feita a partir de um arquivo
-    // de dados ($readmemh) ou por um programa de boot.
     initial
     begin
-        // Zera toda a memória inicialmente.
         for (i=0; i<64; i=i+1)
         begin
             mem[i] = 0;
         end
-        // Pré-carrega alguns valores em endereços específicos para teste.
-        mem[0] = 8'd1;
-        mem[8] = 8'd2;
-        mem[16] = 8'd3;
-        mem[24] = 8'd4;
-        mem[32] = 8'd5;
-        mem[40] = 8'd6;
-        mem[48] = 8'd7;
-        mem[56] = 8'd8;
+        mem[0] = 8'd1; mem[8] = 8'd2; mem[16] = 8'd3; mem[24] = 8'd4;
+        mem[32] = 8'd5; mem[40] = 8'd6; mem[48] = 8'd7; mem[56] = 8'd8;
     end
  
     // Atribuições para as saídas de diagnóstico.
-    // Elas concatenam 8 bytes para formar uma palavra de 64 bits,
-    // mostrando o conteúdo de endereços específicos.
     assign element1 = {mem[7],mem[6],mem[5],mem[4],mem[3],mem[2],mem[1],mem[0]};
     assign element2 = {mem[15],mem[14],mem[13],mem[12],mem[11],mem[10],mem[9],mem[8]};
     assign element3 = {mem[23],mem[22],mem[21],mem[20],mem[19],mem[18],mem[17],mem[16]};
@@ -66,40 +53,30 @@ module data_memory(
     assign element8 = {mem[63],mem[62],mem[61],mem[60],mem[59],mem[58],mem[57],mem[56]};
  
     // Lógica de LEITURA (Read) - Combinacional (Assíncrona)
-    // A leitura acontece imediatamente quando 'memoryread' é ativado.
     always @ (*)
     begin
         if (memoryread)
         begin
-            // Lê 8 bytes consecutivos da memória, a partir do 'address' fornecido,
-            // e os concatena para formar a palavra de 64 bits 'read_data'.
-            read_data[7:0]   = mem[address+0];
-            read_data[15:8]  = mem[address+1];
-            read_data[23:16] = mem[address+2];
-            read_data[31:24] = mem[address+3];
-            read_data[39:32] = mem[address+4];
-            read_data[47:40] = mem[address+5];
-            read_data[55:48] = mem[address+6];
-            read_data[63:56] = mem[address+7];
+            // Lê 8 bytes consecutivos da memória e os concatena.
+            read_data = {mem[address+7], mem[address+6], mem[address+5], mem[address+4],
+                         mem[address+3], mem[address+2], mem[address+1], mem[address+0]};
+        end
+        else
+        begin
+            // CORREÇÃO: Adicionada cláusula 'else' para evitar a criação de um latch.
+            // Quando não estamos lendo, a saída é indefinida ('x' ou don't care).
+            read_data = 64'hxxxxxxxxxxxxxxxx;
         end
     end
 
     // Lógica de ESCRITA (Write) - Sequencial (Síncrona)
-    // A escrita só ocorre na borda de subida do clock.
     always @(posedge clk)
     begin
         if (memorywrite)
         begin
-            // Pega a palavra de 64 bits 'write_data', divide-a em 8 bytes e
-            // os armazena em 8 posições consecutivas da memória.
-            mem[address+0] = write_data[7:0];
-            mem[address+1] = write_data[15:8];
-            mem[address+2] = write_data[23:16];
-            mem[address+3] = write_data[31:24];
-            mem[address+4] = write_data[39:32];
-            mem[address+5] = write_data[47:40];
-            mem[address+6] = write_data[55:48];
-            mem[address+7] = write_data[63:56];
+            // Pega a palavra de 64 bits, divide-a em 8 bytes e os armazena.
+            {mem[address+7], mem[address+6], mem[address+5], mem[address+4],
+             mem[address+3], mem[address+2], mem[address+1], mem[address+0]} = write_data;
         end
     end
 endmodule
