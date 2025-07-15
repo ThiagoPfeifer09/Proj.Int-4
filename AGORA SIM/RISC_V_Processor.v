@@ -7,12 +7,11 @@
 // =========================================================================
 // == INCLUDES E DECLARAÇÃO DO MÓDULO
 // =========================================================================
-// Alterado para incluir arquivos .v em vez de .sv
-`include "2_1mux.v"
-`include "imm_data_extractor.v"
-`include "instruction_parser.v"
+`include "mux2x1.v"
+`include "data_extractor.v"
+`include "Parser.v"
 `include "reg_file.v"
-`include "alu_64bit.v"
+`include "Alu_64.v"
 `include "data_memory.v"
 `include "instruction_memory.v"
 `include "program_counter.v"
@@ -21,11 +20,11 @@
 `include "alu_control.v"
 `include "pipeline_flush.v"
 `include "hazard_detection_unit.v"
-`include "ThreebyOneMux.v"
-`include "IFID.v"
-`include "IDEX.v"
-`include "EXMEM.v"
-`include "MEMWB.v"
+`include "Mux3x1.v"
+`include "IF_ID.v"
+`include "ID_EX.v"
+`include "EX_MEM.v"
+`include "MEM_WB.v"
 `include "branching_unit.v"
 `include "ForwardingUnit.v"
 
