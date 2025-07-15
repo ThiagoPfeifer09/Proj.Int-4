@@ -1,4 +1,4 @@
-// Módulo: mux3x1 (Multiplexador 3 para 1)
+// Módulo: mux3x1 (Multiplexador 3 para 1) - Versão Verilog-2001 Aprimorada
 // Objetivo: Este módulo implementa um multiplexador combinacional que seleciona
 // uma de três entradas de dados de 64 bits (a, b, c) com base em um sinal
 // de seleção de 2 bits (sel) e a direciona para a saída.
@@ -26,11 +26,10 @@ module mux3x1(
             2'b01: out = b; // Se sel = 01, a saída recebe o valor de 'b'.
             2'b10: out = c; // Se sel = 10, a saída recebe o valor de 'c'.
             
-            // ATENÇÃO: O caso para sel = 2'b11 não está definido. Em hardware,
-            // isso pode levar à inferência de um 'latch', o que geralmente
-            // é indesejado em um circuito combinacional. Uma boa prática é
-            // cobrir todos os casos possíveis usando uma cláusula 'default'.
-            // Exemplo: default: out = 64'b0;
+            // CORREÇÃO: Adicionada cláusula 'default' para cobrir todos os
+            // casos possíveis do seletor 'sel' (incluindo 2'b11).
+            // Isso evita a criação de um 'latch' e torna o design robusto.
+            default: out = 64'hxxxxxxxxxxxxxxxx; // 'x' = don't care
         endcase
     end
 endmodule
