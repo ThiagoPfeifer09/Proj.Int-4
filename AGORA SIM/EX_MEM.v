@@ -62,7 +62,7 @@ module EX_MEM(
       Branch <= 1'b0;
       Memread <= 1'b0;
       Memtoreg <= 1'b0;
-      Memwrite <= 1'b0;
+      MemWrite <= 1'b0;
       Regwrite <= 1'b0;
       addermuxselect <= 1'b0;
     end
@@ -79,7 +79,7 @@ module EX_MEM(
       Branch <= branch_in;
       Memread <= memread_in;
       Memtoreg <= memtoreg_in;
-      Memwrite <= memwrite_in;
+      MemWrite <= memwrite_in;
       Regwrite <= regwrite_in;
       addermuxselect <= addermuxselect_in;
     end
