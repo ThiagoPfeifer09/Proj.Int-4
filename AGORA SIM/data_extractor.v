@@ -1,4 +1,4 @@
-// Módulo: data_extractor (Extrator de Dados Imediatos)
+// Módulo: data_extractor (Extrator de Dados Imediatos) - Versão Verilog-2001 Aprimorada
 // Objetivo: Este módulo é responsável por uma tarefa crucial na etapa de Decodificação:
 // extrair os bits do valor imediato da instrução, montá-los na ordem correta
 // de acordo com o formato da instrução (I, S, B, etc.), e então estender o sinal
@@ -12,43 +12,36 @@ module data_extractor (
     output reg [63:0] imm_data  // O valor imediato final, com sinal estendido para 64 bits.
 );
  
+    // Registrador temporário para armazenar o imediato de 12 bits já montado.
+    // Isso evita dependências lógicas complexas e torna o código mais seguro para a síntese.
+    reg [11:0] imm_12bit;
+
     always @(*)
     begin
-        // O 'case' seleciona a lógica de extração do imediato.
-        // ATENÇÃO: Usar 'instruction[6:5]' como seletor é uma simplificação.
-        // Em um processador RISC-V completo, isso não é suficiente para diferenciar
-        // todos os formatos (ex: S-type e R-type podem ter os mesmos bits [6:5]).
-        // Um design robusto usaria o opcode completo ou sinais da Unidade de Controle.
+        // O 'case' seleciona a lógica de extração do imediato e a armazena
+        // no registrador temporário 'imm_12bit'.
+        // ATENÇÃO: Usar 'instruction[6:5]' como seletor é uma simplificação que pode
+        // não funcionar para um conjunto de instruções RISC-V completo.
         case (instruction[6:5])
-            // Caso para formatos I-type (ex: addi, lw).
+            // Formatos I-type (ex: addi, lw).
             2'b00:
-            begin
-                // O imediato de 12 bits está contido nos bits [31:20].
-                imm_data[11:0] = instruction[31:20];
-            end
+                imm_12bit = instruction[31:20];
             
-            // Caso para formatos S-type (ex: sw).
+            // Formatos S-type (ex: sw).
             2'b01:
-            begin
-                // O imediato de 12 bits é dividido em dois campos.
-                // Precisamos concatená-los na ordem correta.
-                imm_data[11:0] = {instruction[31:25], instruction[11:7]};
-            end
+                imm_12bit = {instruction[31:25], instruction[11:7]};
             
-            // Caso para formatos B-type (ex: beq).
+            // Formatos B-type (ex: beq).
             2'b11:
-            begin
-                // O imediato de 12 bits do branch também é dividido e precisa ser
-                // remontado na ordem correta.
-                imm_data[11:0] = {instruction[31], instruction[7], instruction[30:25], instruction[11:8]};
-            end
+                imm_12bit = {instruction[31], instruction[7], instruction[30:25], instruction[11:8]};
+
+            // O default garante que não haverá latch se um formato desconhecido for recebido.
+            default:
+                imm_12bit = 12'hxxx; // 'x' = don't care
         endcase
         
-        // Extensão de Sinal para 64 bits.
-        // Após montar o imediato de 12 bits, pegamos o seu bit mais significativo
-        // (o bit de sinal, imm_data[11]) e o replicamos nas 52 posições
-        // superiores. Isso garante que o valor do imediato (positivo ou negativo)
-        // seja preservado quando ele for estendido para 64 bits.
-        imm_data = {{52{imm_data[11]}},{imm_data[11:0]}};
+        // Extensão de Sinal para 64 bits a partir do valor de 12 bits já montado.
+        // Pega o bit de sinal (imm_12bit[11]) e o replica nas 52 posições superiores.
+        imm_data = {{52{imm_12bit[11]}}, {imm_12bit}};
     end
 endmodule
