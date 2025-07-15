@@ -1,4 +1,4 @@
-// Módulo: Alu64 (Unidade Lógica e Aritmética de 64 bits)
+// Módulo: Alu64 (Unidade Lógica e Aritmética de 64 bits) - Versão Verilog-2001
 // Objetivo: Este módulo é o "cérebro matemático" do processador. Ele executa
 // operações aritméticas (soma, subtração) e lógicas (AND, OR, NOR) em dois
 // operandos de 64 bits. A operação a ser executada é determinada por um sinal
@@ -27,11 +27,10 @@ module Alu64 (
             4'b0110: Result = a - b;     // Operação de Subtração
             4'b1100: Result = ~(a | b);  // Operação NOR bit a bit
             
-            // ATENÇÃO: A instrução 'case' está incompleta. Um seletor de 4 bits
-            // tem 16 combinações possíveis, mas apenas 5 estão definidas.
-            // Para evitar a inferência de latches indesejados, é uma boa prática
-            // adicionar uma cláusula 'default' para cobrir os casos restantes.
-            // Exemplo: default: Result = 64'b0;
+            // Cláusula 'default' adicionada para garantir que todos os casos
+            // sejam cobertos, evitando a criação de latches em hardware.
+            // Se um 'ALUop' não reconhecido for recebido, o resultado é 0.
+            default: Result = 64'b0;
         endcase
         
         // Lógica para o flag 'zero'. Após qualquer operação, verificamos se o
