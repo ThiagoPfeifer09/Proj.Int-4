@@ -15,27 +15,25 @@ module program_counter(
     output reg [63:0] PC_out // O valor ATUAL do PC, enviado para a Memória de Instruções.
 );
  
-    // Bloco sensível à borda de subida do clock (operação síncrona)
-    // e à borda de subida do reset (reset assíncrono).
-    always @(posedge clk or posedge reset)
+   // Bloco síncrono. O reset agora também é síncrono ao clock.
+    always @(posedge clk)
     begin
-        // Lógica de reset assíncrono: se 'reset' for ativado, o PC é
-        // imediatamente forçado para o endereço 0, o ponto de partida padrão.
+        // A lógica de reset agora está DENTRO do bloco sensível ao clock.
+        // O PC irá para 0 na primeira borda de subida do clock em que o reset estiver ativo.
         if (reset == 1'b1)
         begin
             PC_out <= 64'd0;
         end
-        // Operação síncrona normal (sem stall).
-        // Se não houver reset e o pipeline não estiver paralisado ('stall' == 0),
-        // o PC é atualizado com o próximo valor na borda de subida do clock.
-        else if (stall == 1'b0)
+        // Se não houver reset, verificamos o stall.
+        else if (stall == 1'b0) 
         begin
             PC_out <= PC_in;
         end
+        // Se stall for '1', o PC mantém o valor (hold implícito).
+    end
         // STALL (PARALISAÇÃO) IMPLÍCITO: Note que não há um 'else' final.
         // Se 'stall' for '1', nenhuma das condições do 'if/else if' é satisfeita.
         // Portanto, o registrador 'PC_out' mantém seu valor anterior.
         // É assim que o PC é "congelado" durante um stall, impedindo que novas
         // instruções sejam buscadas.
-    end
 endmodule
