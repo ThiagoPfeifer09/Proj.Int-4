@@ -1,4 +1,3 @@
-
 module data_extractor
  (
     input [31:0] instruction,
@@ -25,3 +24,4 @@ module data_extractor
     end  
   
 endmodule
+
