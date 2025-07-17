@@ -1,4 +1,4 @@
-Com certeza! Preparei um README detalhado em português para explicar cada módulo do seu processador RISC-V.
+Abaixo está organizado um readme com uma explicação do que é cada módulo, não tive muito tempo de detalhar muito bem, mas foi o que deu :)
 
 ---
 
@@ -186,4 +186,4 @@ Este módulo é um *testbench* projetado para verificar o funcionamento da `cach
 
 ---
 
-Espero que esta explicação detalhada ajude você a entender o funcionamento de cada parte do seu processador RISC-V! Se tiver mais alguma dúvida sobre um módulo específico ou a interação entre eles, é só perguntar!
+Espero que esta explicação ajude você a entender um pouco o funcionamento de cada parte do nosso processador RISC-V!
