@@ -101,14 +101,6 @@ module RISC_V_Processor(
   wire addermuxselect;
   wire branch_final;
 
-  // Memória e cache - sinais adicionais
-  wire [63:0] mem_address;
-  wire [63:0] mem_write_data;
-  wire [127:0] mem_block_read_data;
-  wire mem_read_out;
-  wire mem_write_out;
-  wire [63:0] readdata; // leitura 64 bits da cache para o processador
-  wire cache_miss;
 
   pipeline_flush p_flush (
     .branch(branch_final & BRANCH),
@@ -255,9 +247,7 @@ module RISC_V_Processor(
     .rd(exmemrd), .Branch(BRANCH), .Memread(MEMREAD), .Memtoreg(MEMTOREG), .Memwrite(MEMEWRITE), .Regwrite(REGWRITE), .addermuxselect(branch_final)
   );
 
-  // CACHE - leitura/escrita pela cache_dados
-	// Instancia cache_dados com saída miss
-  cache_dados cache_inst (
+cache_dados cache_inst (
     .clk(clk),
     .reset(reset),
     .address(exmem_out_result),
@@ -266,7 +256,7 @@ module RISC_V_Processor(
     .mem_read(MEMREAD),
     .read_data(readdata),
     .miss(cache_miss)
-  );
+);
 
   // Memória de dados real atrás da cache
   data_memory datamem (
