@@ -184,4 +184,4 @@ Este módulo é um *testbench* projetado para verificar o funcionamento da `cach
 
 ---
 
-Espero que esta explicação ajude você a entender um pouco o funcionamento de cada parte do nosso processador RISC-V!
+Espero que esta explicação ajude você a entender um pouco o funcionamento de cada parte do nosso processador RISC-V! Ele ainda possui erros ligados principalmente a cache e ao codigo testado. Testando separadamente tudo funciona, o grande problema é o código do bubble que a gente fez mesmo!
