@@ -67,7 +67,7 @@ module control_unit(
           Aluop =2'b00;
         end
       
-      else //default case
+      else //default, classico NOP
         begin
           aluSrc = 1'b0;
           memtoreg = 1'b0;

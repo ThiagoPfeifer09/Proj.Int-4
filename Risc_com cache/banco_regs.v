@@ -54,25 +54,24 @@ module banco_regs(
   assign r8 = registers[8];
   assign r19 = registers[19];
   assign r20 = registers[20];
-  assign r21 = registers[26];
-  assign r22 = registers[27];
+  assign r21 = registers[21];
+  assign r22 = registers[22];
+
  
-  always @ (*)
-    begin
-      if (reset == 1'b1)
-        begin
-          readdata1 = 64'd0;
-          readdata2 = 64'd0;
-        end
-      else
-        begin
-          readdata1 = registers[rs1];
-          readdata2 = registers[rs2];
-        end
-    end
-  always@(negedge clk)
-    begin
-      if (reg_write == 1)
-        registers[rd] = writedata;
-    end
+  always @(*)
+begin
+  if (reset)
+  begin
+    readdata1 = 64'd0;
+    readdata2 = 64'd0;
+  end
+  else if (^rs1 === 1'bx || ^rs2 === 1'bx) begin
+    readdata1 = 64'd0;
+    readdata2 = 64'd0;
+  end
+  else begin
+    readdata1 = registers[rs1];
+    readdata2 = registers[rs2];
+  end
+end
 endmodule
