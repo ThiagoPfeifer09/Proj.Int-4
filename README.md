@@ -15,12 +15,10 @@ Este é o módulo de nível superior que integra todos os outros componentes do 
 ### Entradas:
 * `clk`: Sinal de clock principal.
 * `reset`: Sinal de reset para inicializar o processador.
-* `element1` a `element8`: Entradas genéricas de 64 bits (possivelmente para depuração ou inicialização de registradores, dependendo do uso específico).
+* `element1` a `element8`: Entradas genéricas de 64 bits (usadas somente para uma depuração).
 * `stall`: Sinal para pausar o pipeline devido a uma dependência de dados ou miss na cache.
 * `flush`: Sinal para limpar o pipeline (usado em desvios e exceções).
 
-### Saídas:
-(Não explicitamente listadas como saídas do módulo principal, mas os resultados finais do processamento estariam nos registradores ou na memória de dados).
 
 ### Funcionamento Geral:
 O `RISC_V_Processor` orquestra as cinco etapas clássicas de um pipeline (Fetch, Decode, Execute, Memory, Write-back) e lida com os sinais de controle e dados que fluem entre elas, incluindo a detecção e resolução de *hazards* (riscos) e o tratamento de *flushes* de pipeline.
