@@ -1,0 +1,779 @@
+Cadence Genus(TM) Synthesis Solution.
+Copyright 2020 Cadence Design Systems, Inc. All rights reserved worldwide.
+Cadence and the Cadence logo are registered trademarks and Genus is a trademark
+of Cadence Design Systems, Inc. in the United States and other countries.
+
+Version: 20.10-p001_1, built Fri Dec 11 11:29:55 PST 2020
+Options: -files basic.tcl 
+Date:    Thu Jul 17 21:44:13 2025
+Host:    gama03 (x86_64 w/Linux 3.10.0-1160.49.1.el7.x86_64) (4cores*8cpus*1physical cpu*Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz 8192KB) (32720976KB)
+PID:     10509
+OS:      CentOS Linux release 7.9.2009 (Core)
+
+Checking out license: Genus_Synthesis
+
+
+***********************************************************************************************************
+***********************************************************************************************************
+
+
+
+Loading tool scripts...
+Using chipware dir from user defined $CW_DIR envirionment variable set to /tools/cadence/GENUS201/tools.lnx86/lib/chipware
+
+Finished loading tool scripts (7 seconds elapsed).
+
+#@ Processing -files option
+@genus 1> source basic.tcl
+#@ Begin verbose source ./basic.tcl
+@file(basic.tcl) 3: if {[file exists /proc/cpuinfo]} {
+  sh grep "model name" /proc/cpuinfo
+  sh grep "cpu MHz"    /proc/cpuinfo
+}
+model name	: Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz
+model name	: Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz
+model name	: Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz
+model name	: Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz
+model name	: Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz
+model name	: Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz
+model name	: Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz
+model name	: Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz
+cpu MHz		: 3899.707
+cpu MHz		: 3871.276
+cpu MHz		: 3877.087
+cpu MHz		: 3884.973
+cpu MHz		: 3871.276
+cpu MHz		: 3896.801
+cpu MHz		: 3885.803
+cpu MHz		: 3794.909
+@file(basic.tcl) 8: puts "Hostname : [info hostname]"
+Hostname : gama03
+@file(basic.tcl) 15: set DESIGN RISC_V_Processor
+@file(basic.tcl) 16: set GEN_EFF medium
+@file(basic.tcl) 17: set MAP_OPT_EFF high
+@file(basic.tcl) 18: set DATE [clock format [clock seconds] -format "%b%d-%T"] 
+@file(basic.tcl) 19: set _OUTPUTS_PATH outputs_${DATE}
+@file(basic.tcl) 20: set _REPORTS_PATH reports_${DATE}
+@file(basic.tcl) 21: set _LOG_PATH logs_${DATE}
+@file(basic.tcl) 23: set_db / .init_lib_search_path {. ./lib} 
+  Setting attribute of root '/': 'init_lib_search_path' = . ./lib
+@file(basic.tcl) 24: set_db / .script_search_path {. <path>} 
+  Setting attribute of root '/': 'script_search_path' = . <path>
+@file(basic.tcl) 25: set_db / .init_hdl_search_path {. ./rtl} 
+  Setting attribute of root '/': 'init_hdl_search_path' = . ./rtl
+@file(basic.tcl) 34: set_db / .information_level 7 
+  Setting attribute of root '/': 'information_level' = 7
+@file(basic.tcl) 39: read_libs /gpdk045/gsclib045_all_v4.7/gsclib045/timing/slow_vdd1v2_basicCells.lib
+
+Threads Configured:3
+Info    : Missing a function attribute in the output pin definition. [LBR-518]
+        : Functionality is missing at pin 'Y' for the cell 'HOLDX1'. (File /gpdk045/gsclib045_all_v4.7/gsclib045/timing/slow_vdd1v2_basicCells.lib, Line 67517)
+
+  Message Summary for Library slow_vdd1v2_basicCells.lib:
+  *******************************************************
+  Missing a function attribute in the output pin definition. [LBR-518]: 1
+  *******************************************************
+ 
+            Reading file '/gpdk045/gsclib045_all_v4.7/gsclib045/timing/slow_vdd1v2_basicCells.lib'
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.080000, 125.000000) in library 'slow_vdd1v2_basicCells.lib'.
+        : The nominal operating condition is represented, either by the nominal PVT values specified in the library source (via nom_process,nom_voltage and nom_temperature respectively), or by the default PVT values (1.0,1.0,1.0).
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'ANTENNA' must have an output pin.
+        : Add the missing output pin(s), then reload the library. Else the library cell will be marked as timing model i.e. unusable. Timing_model means that the cell does not have any defined function. If there is no output pin, Genus will mark library cell as unusable i.e. the attribute 'usable' will be marked to 'false' on the libcell. Therefore, the cell is not used for mapping and it will not be picked up from the library for synthesis. If you query the attribute 'unusable_reason' on the libcell; result will be: 'Library cell has no output pins.'Note: The message LBR-9 is only for the logical pins and not for the power_ground pins. Genus will depend upon the output function defined in the pin group (output pin) of the cell, to use it for mapping. The pg_pin will not have any function defined.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'ANTENNA' must have an output pin.
+Info    : An output library pin lacks a function attribute. [LBR-41]
+        : Output pin 'HOLDX1/Y' has no function.
+        : If the remainder of this library cell's semantic checks are successful, it will be considered as a timing-model (because one of its outputs does not have a valid function.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP10' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP10' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP2' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP2' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP3' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP3' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP4' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP4' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP5' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP5' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP6' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP6' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP7' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP7' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP8' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP8' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP9' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP9' must have an output pin.
+@file(basic.tcl) 40: read_physical -lef /gpdk045/gsclib045_all_v4.7/gsclib045/lef/gsclib045_tech.lef
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M2_M1_HV' has no resistance value.
+        : If this is the expected behavior, this message can be ignored.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M2_M1_VV' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M2_M1_VH' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M2_M1_HH' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M2_M1_2x1_HV_E' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M2_M1_2x1_HV_W' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M2_M1_1x2_HV_N' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M2_M1_1x2_HV_S' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3_M2_VH' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3_M2_HH' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3_M2_HV' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3_M2_VV' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3_M2_M_NH' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3_M2_M_SH' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3_M2_2x1_VH_E' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3_M2_2x1_VH_W' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3_M2_1x2_VH_N' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3_M2_1x2_VH_S' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M4_M3_HV' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M4_M3_VV' has no resistance value.
+
+  According to lef_library, there are total 11 routing layers [ V(5) / H(6) ]
+
+Warning : None of the loaded LEF files have MACRO statements. [PHYS-20]
+        : Make sure the LEF file containing MACRO statement was not missed.
+        : The LEF file containing the cell specific information was not loaded. The LEF MACRO construct is used to set the physical data on cells in the timing library. It is likely that only the technology LEF file was loaded. Load all the associated LEF files.
+@file(basic.tcl) 49: set_db / .lp_insert_clock_gating true 
+  Setting attribute of root '/': 'lp_insert_clock_gating' = true
+@file(basic.tcl) 56: read_hdl -language sv /home/ThiagoPfeifer/Desktop/riscv_comcache/design.v
+            Reading Verilog file '/home/ThiagoPfeifer/Desktop/riscv_comcache/design.v'
+@file(basic.tcl) 57: read_hdl -language sv /home/ThiagoPfeifer/Desktop/riscv_comcache/alu_64bit.v
+            Reading Verilog file '/home/ThiagoPfeifer/Desktop/riscv_comcache/alu_64bit.v'
+@file(basic.tcl) 58: read_hdl -language sv /home/ThiagoPfeifer/Desktop/riscv_comcache/alu_control.v
+            Reading Verilog file '/home/ThiagoPfeifer/Desktop/riscv_comcache/alu_control.v'
+@file(basic.tcl) 59: read_hdl -language sv /home/ThiagoPfeifer/Desktop/riscv_comcache/banco_regs.v
+            Reading Verilog file '/home/ThiagoPfeifer/Desktop/riscv_comcache/banco_regs.v'
+  initial begin
+        |
+Warning : Ignoring unsynthesizable construct. [VLOGPT-37]
+        : Initial in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/banco_regs.v' on line 22, column 9.
+        : For example, the following constructs will be ignored:
+    - initial block
+    - final block
+    - program block
+    - property block
+    - sequence block
+    - covergroup
+    - checker block
+    - gate drive strength
+    - system task enable
+    - reg declaration with initial value
+    - specify block.
+@file(basic.tcl) 60: read_hdl -language sv /home/ThiagoPfeifer/Desktop/riscv_comcache/branching_unit.v
+            Reading Verilog file '/home/ThiagoPfeifer/Desktop/riscv_comcache/branching_unit.v'
+  initial
+        |
+Warning : Ignoring unsynthesizable construct. [VLOGPT-37]
+        : Initial in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/branching_unit.v' on line 9, column 9.
+@file(basic.tcl) 61: read_hdl -language sv /home/ThiagoPfeifer/Desktop/riscv_comcache/Cache_Dados.v
+            Reading Verilog file '/home/ThiagoPfeifer/Desktop/riscv_comcache/Cache_Dados.v'
+initial begin
+      |
+Warning : Ignoring unsynthesizable construct. [VLOGPT-37]
+        : Initial in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/Cache_Dados.v' on line 50, column 7.
+@file(basic.tcl) 62: read_hdl -language sv /home/ThiagoPfeifer/Desktop/riscv_comcache/control_unit.v
+            Reading Verilog file '/home/ThiagoPfeifer/Desktop/riscv_comcache/control_unit.v'
+@file(basic.tcl) 63: read_hdl -language sv /home/ThiagoPfeifer/Desktop/riscv_comcache/data_memory.v
+            Reading Verilog file '/home/ThiagoPfeifer/Desktop/riscv_comcache/data_memory.v'
+@file(basic.tcl) 64: read_hdl -language sv /home/ThiagoPfeifer/Desktop/riscv_comcache/data_extractor.v
+            Reading Verilog file '/home/ThiagoPfeifer/Desktop/riscv_comcache/data_extractor.v'
+@file(basic.tcl) 65: read_hdl -language sv /home/ThiagoPfeifer/Desktop/riscv_comcache/doisx1Mux.v
+            Reading Verilog file '/home/ThiagoPfeifer/Desktop/riscv_comcache/doisx1Mux.v'
+@file(basic.tcl) 66: read_hdl -language sv /home/ThiagoPfeifer/Desktop/riscv_comcache/IF_ID.v
+            Reading Verilog file '/home/ThiagoPfeifer/Desktop/riscv_comcache/IF_ID.v'
+@file(basic.tcl) 67: read_hdl -language sv /home/ThiagoPfeifer/Desktop/riscv_comcache/EX_MEM.v
+            Reading Verilog file '/home/ThiagoPfeifer/Desktop/riscv_comcache/EX_MEM.v'
+@file(basic.tcl) 68: read_hdl -language sv /home/ThiagoPfeifer/Desktop/riscv_comcache/ID_EX.v
+            Reading Verilog file '/home/ThiagoPfeifer/Desktop/riscv_comcache/ID_EX.v'
+@file(basic.tcl) 69: read_hdl -language sv /home/ThiagoPfeifer/Desktop/riscv_comcache/ForwardingUnit.v
+            Reading Verilog file '/home/ThiagoPfeifer/Desktop/riscv_comcache/ForwardingUnit.v'
+@file(basic.tcl) 70: read_hdl -language sv /home/ThiagoPfeifer/Desktop/riscv_comcache/hazard_detection_unit.v
+            Reading Verilog file '/home/ThiagoPfeifer/Desktop/riscv_comcache/hazard_detection_unit.v'
+  initial
+        |
+Warning : Ignoring unsynthesizable construct. [VLOGPT-37]
+        : Initial in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/hazard_detection_unit.v' on line 9, column 9.
+@file(basic.tcl) 71: read_hdl -language sv /home/ThiagoPfeifer/Desktop/riscv_comcache/instruc_mem.v
+            Reading Verilog file '/home/ThiagoPfeifer/Desktop/riscv_comcache/instruc_mem.v'
+  initial
+        |
+Warning : Ignoring unsynthesizable construct. [VLOGPT-37]
+        : Initial in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/instruc_mem.v' on line 7, column 9.
+@file(basic.tcl) 72: read_hdl -language sv /home/ThiagoPfeifer/Desktop/riscv_comcache/MEM_WB.v
+            Reading Verilog file '/home/ThiagoPfeifer/Desktop/riscv_comcache/MEM_WB.v'
+@file(basic.tcl) 73: read_hdl -language sv /home/ThiagoPfeifer/Desktop/riscv_comcache/parser.v
+            Reading Verilog file '/home/ThiagoPfeifer/Desktop/riscv_comcache/parser.v'
+@file(basic.tcl) 74: read_hdl -language sv /home/ThiagoPfeifer/Desktop/riscv_comcache/pc.v
+            Reading Verilog file '/home/ThiagoPfeifer/Desktop/riscv_comcache/pc.v'
+@file(basic.tcl) 75: read_hdl -language sv /home/ThiagoPfeifer/Desktop/riscv_comcache/pipeline_flush.v
+            Reading Verilog file '/home/ThiagoPfeifer/Desktop/riscv_comcache/pipeline_flush.v'
+  initial
+        |
+Warning : Ignoring unsynthesizable construct. [VLOGPT-37]
+        : Initial in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/pipeline_flush.v' on line 7, column 9.
+@file(basic.tcl) 76: read_hdl -language sv /home/ThiagoPfeifer/Desktop/riscv_comcache/somador.v
+            Reading Verilog file '/home/ThiagoPfeifer/Desktop/riscv_comcache/somador.v'
+@file(basic.tcl) 77: read_hdl -language sv /home/ThiagoPfeifer/Desktop/riscv_comcache/tresx1MUX.v
+            Reading Verilog file '/home/ThiagoPfeifer/Desktop/riscv_comcache/tresx1MUX.v'
+@file(basic.tcl) 78: elaborate $DESIGN
+Info    : Mismatch in unateness between 'timing_sense' attribute and the function. [LBR-155]
+        : 'timing_sense' attribute between pin 'CI' and 'S' in libcell 'ADDFHX1' is 'pos_unate', but unateness determined from function is 'non_unate'.
+        : The 'timing_sense' attribute will be respected.
+Info    : Mismatch in unateness between 'timing_sense' attribute and the function. [LBR-155]
+        : 'timing_sense' attribute between pin 'CI' and 'S' in libcell 'ADDFHX1' is 'neg_unate', but unateness determined from function is 'non_unate'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'CI' and 'S' in libcell 'ADDFHX1'.
+        : Setting the 'timing_sense' to non_unate.
+Info    : Mismatch in unateness between 'timing_sense' attribute and the function. [LBR-155]
+        : 'timing_sense' attribute between pin 'B' and 'S' in libcell 'ADDFHX1' is 'pos_unate', but unateness determined from function is 'non_unate'.
+Info    : Mismatch in unateness between 'timing_sense' attribute and the function. [LBR-155]
+        : 'timing_sense' attribute between pin 'B' and 'S' in libcell 'ADDFHX1' is 'neg_unate', but unateness determined from function is 'non_unate'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'B' and 'S' in libcell 'ADDFHX1'.
+Info    : Mismatch in unateness between 'timing_sense' attribute and the function. [LBR-155]
+        : 'timing_sense' attribute between pin 'A' and 'S' in libcell 'ADDFHX1' is 'pos_unate', but unateness determined from function is 'non_unate'.
+Info    : Mismatch in unateness between 'timing_sense' attribute and the function. [LBR-155]
+        : 'timing_sense' attribute between pin 'A' and 'S' in libcell 'ADDFHX1' is 'neg_unate', but unateness determined from function is 'non_unate'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'A' and 'S' in libcell 'ADDFHX1'.
+Info    : Mismatch in unateness between 'timing_sense' attribute and the function. [LBR-155]
+        : 'timing_sense' attribute between pin 'CI' and 'S' in libcell 'ADDFHX2' is 'pos_unate', but unateness determined from function is 'non_unate'.
+Info    : Mismatch in unateness between 'timing_sense' attribute and the function. [LBR-155]
+        : 'timing_sense' attribute between pin 'CI' and 'S' in libcell 'ADDFHX2' is 'neg_unate', but unateness determined from function is 'non_unate'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'CI' and 'S' in libcell 'ADDFHX2'.
+Info    : Mismatch in unateness between 'timing_sense' attribute and the function. [LBR-155]
+        : 'timing_sense' attribute between pin 'B' and 'S' in libcell 'ADDFHX2' is 'pos_unate', but unateness determined from function is 'non_unate'.
+Info    : Mismatch in unateness between 'timing_sense' attribute and the function. [LBR-155]
+        : 'timing_sense' attribute between pin 'B' and 'S' in libcell 'ADDFHX2' is 'neg_unate', but unateness determined from function is 'non_unate'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'B' and 'S' in libcell 'ADDFHX2'.
+Info    : Setting the maximum print count of this message to 10 if information_level is less than 9. [LBR-161]
+        : To print all the warning messages, set the information_level to 9.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'A' and 'S' in libcell 'ADDFHX2'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'CI' and 'S' in libcell 'ADDFHX4'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'B' and 'S' in libcell 'ADDFHX4'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'A' and 'S' in libcell 'ADDFHX4'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'CI' and 'S' in libcell 'ADDFHXL'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'B' and 'S' in libcell 'ADDFHXL'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'A' and 'S' in libcell 'ADDFHXL'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'CI' and 'S' in libcell 'ADDFX1'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'B' and 'S' in libcell 'ADDFX1'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'A' and 'S' in libcell 'ADDFX1'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'CI' and 'S' in libcell 'ADDFX2'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'B' and 'S' in libcell 'ADDFX2'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'A' and 'S' in libcell 'ADDFX2'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'CI' and 'S' in libcell 'ADDFX4'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'B' and 'S' in libcell 'ADDFX4'.
+  Library has 324 usable logic and 128 usable sequential lib-cells.
+          INLINE_INFO: Skipping marking small hierarchies inline as the variable 'hdl_dissolve_primitive_instance_hierarchy_threshold' has not been set to a positive value.
+Info    : Elaborating Design. [ELAB-1]
+        : Elaborating top-level block 'RISC_V_Processor' from file '/home/ThiagoPfeifer/Desktop/riscv_comcache/design.v'.
+Info    : Elaborating Subdesign. [ELAB-2]
+        : Elaborating block 'pipeline_flush' from file '/home/ThiagoPfeifer/Desktop/riscv_comcache/pipeline_flush.v'.
+Warning : Input port connected to output instance port. [CDFG-562]
+        : Input port 'flush' connected to output port 'flush' of module 'pipeline_flush' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/design.v' on line 105.
+Info    : Elaborating Subdesign. [ELAB-2]
+        : Elaborating block 'hazard_detection_unit' from file '/home/ThiagoPfeifer/Desktop/riscv_comcache/hazard_detection_unit.v'.
+Info    : Elaborating Subdesign. [ELAB-2]
+        : Elaborating block 'pc' from file '/home/ThiagoPfeifer/Desktop/riscv_comcache/pc.v'.
+Info    : Elaborating Subdesign. [ELAB-2]
+        : Elaborating block 'instruc_mem' from file '/home/ThiagoPfeifer/Desktop/riscv_comcache/instruc_mem.v'.
+Info    : Processing multi-dimensional arrays. [CDFG-250]
+        : Variable 'inst_mem' in module 'instruc_mem' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/instruc_mem.v' on line 5.
+Warning : Referenced signals are not added in sensitivity list. This may cause simulation mismatches between the original and the synthesized design. [CDFG-360]
+        : Signal 'inst_mem' in module 'instruc_mem' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/instruc_mem.v' on line 76.
+        : Add missing reference signals in the sensitivity list or use '*' to add all the signals in the sensitivity list. Example : always @(a or b) (OR) always (*))
+Info    : Elaborating Subdesign. [ELAB-2]
+        : Elaborating block 'somador' from file '/home/ThiagoPfeifer/Desktop/riscv_comcache/somador.v'.
+Info    : Elaborating Subdesign. [ELAB-2]
+        : Elaborating block 'IF_ID' from file '/home/ThiagoPfeifer/Desktop/riscv_comcache/IF_ID.v'.
+Info    : Elaborating Subdesign. [ELAB-2]
+        : Elaborating block 'Parser' from file '/home/ThiagoPfeifer/Desktop/riscv_comcache/parser.v'.
+Info    : Elaborating Subdesign. [ELAB-2]
+        : Elaborating block 'control_unit' from file '/home/ThiagoPfeifer/Desktop/riscv_comcache/control_unit.v'.
+Info    : Identified sum-of-products logic to be optimized during syn_generic. [CDFG-769]
+        : Sum-of-products logic in module 'control_unit' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/control_unit.v' on line 16.
+Info    : Elaborating Subdesign. [ELAB-2]
+        : Elaborating block 'data_extractor' from file '/home/ThiagoPfeifer/Desktop/riscv_comcache/data_extractor.v'.
+Info    : Elaborating Subdesign. [ELAB-2]
+        : Elaborating block 'banco_regs' from file '/home/ThiagoPfeifer/Desktop/riscv_comcache/banco_regs.v'.
+Info    : Processing multi-dimensional arrays. [CDFG-250]
+        : Variable 'registers' in module 'banco_regs' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/banco_regs.v' on line 19.
+Info    : Elaborating Subdesign. [ELAB-2]
+        : Elaborating block 'ID_EX' from file '/home/ThiagoPfeifer/Desktop/riscv_comcache/ID_EX.v'.
+Info    : Elaborating Subdesign. [ELAB-2]
+        : Elaborating block 'tresx1MUX' from file '/home/ThiagoPfeifer/Desktop/riscv_comcache/tresx1MUX.v'.
+Info    : Latch inferred. Check and revisit your RTL if this is not the intended behavior. [CDFG2G-616]
+        : Latch inferred for variable 'out' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/tresx1MUX.v' on line 10, column 3.
+        : Use the attributes 'set_attribute hdl_error_on_latch true'(LUI) or 'set_db hdl_error_on_latch true' (CUI) to issue an error when a latch is inferred. Use the attributes 'set_attributes hdl_latch_keep_feedback true'(LUI) or 'set_db hdl_latch_keep_feedback true'(CUI) to infer combinational logic rather than a latch in case a variable is explicitly assigned to itself.
+Info    : Elaborating Subdesign. [ELAB-2]
+        : Elaborating block 'doisx1Mux' from file '/home/ThiagoPfeifer/Desktop/riscv_comcache/doisx1Mux.v'.
+Info    : Elaborating Subdesign. [ELAB-2]
+        : Elaborating block 'Alu64' from file '/home/ThiagoPfeifer/Desktop/riscv_comcache/alu_64bit.v'.
+Info    : Bitwidth mismatch in assignment. [CDFG-372]
+        : Width of left hand side 'zero' [1] doesn't match the width of right hand side [32] in assignment in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/alu_64bit.v' on line 20.
+        : Review and make sure the mismatch is unintentional. Genus can possibly issue bitwidth mismatch warning for explicit assignments present in RTL as-well-as for implicit assignments inferred by the tool. For example, in case of enum declaration without value, the tool will implicitly assign value to the enum variables. It also issues the warning for any bitwidth mismatch that appears in this implicit assignment.
+Info    : Bitwidth mismatch in assignment. [CDFG-372]
+        : Width of left hand side 'zero' [1] doesn't match the width of right hand side [32] in assignment in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/alu_64bit.v' on line 22.
+Info    : Latch inferred. Check and revisit your RTL if this is not the intended behavior. [CDFG2G-616]
+        : Latch inferred for variable 'Result' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/alu_64bit.v' on line 10, column 29.
+Info    : Elaborating Subdesign. [ELAB-2]
+        : Elaborating block 'alu_control' from file '/home/ThiagoPfeifer/Desktop/riscv_comcache/alu_control.v'.
+Info    : Skip related conditional write and read sequence. [CDFG-773]
+        : For variable 'operation' in Module 'alu_control' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/alu_control.v' on line 16.
+Info    : Latch inferred. Check and revisit your RTL if this is not the intended behavior. [CDFG2G-616]
+        : Latch inferred for variable 'operation' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/alu_control.v' on line 6, column 29.
+Info    : Elaborating Subdesign. [ELAB-2]
+        : Elaborating block 'EX_MEM' from file '/home/ThiagoPfeifer/Desktop/riscv_comcache/EX_MEM.v'.
+Info    : Bitwidth mismatch in assignment. [CDFG-372]
+        : Width of left hand side 'result_out_alu' [64] doesn't match the width of right hand side [63] in assignment in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/EX_MEM.v' on line 26.
+Info    : Elaborating Subdesign. [ELAB-2]
+        : Elaborating block 'cache_dados' from file '/home/ThiagoPfeifer/Desktop/riscv_comcache/Cache_Dados.v'.
+Info    : Bitwidth mismatch in assignment. [CDFG-372]
+        : Width of left hand side 'IDLE' [2] doesn't match the width of right hand side [32] in assignment in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/Cache_Dados.v' on line 27.
+Info    : Bitwidth mismatch in assignment. [CDFG-372]
+        : Width of left hand side 'MISS' [2] doesn't match the width of right hand side [32] in assignment in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/Cache_Dados.v' on line 27.
+Info    : Processing multi-dimensional arrays. [CDFG-250]
+        : Variable 'cache' in module 'cache_dados' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/Cache_Dados.v' on line 37.
+Info    : Bitwidth mismatch in assignment. [CDFG-372]
+        : Width of left hand side 'miss' [1] doesn't match the width of right hand side [32] in assignment in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/Cache_Dados.v' on line 65.
+Info    : Bitwidth mismatch in assignment. [CDFG-372]
+        : Width of left hand side 'read_data' [64] doesn't match the width of right hand side [32] in assignment in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/Cache_Dados.v' on line 66.
+Info    : Bitwidth mismatch in assignment. [CDFG-372]
+        : Width of left hand side 'mem_read_out' [1] doesn't match the width of right hand side [32] in assignment in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/Cache_Dados.v' on line 67.
+Info    : Bitwidth mismatch in assignment. [CDFG-372]
+        : Width of left hand side 'mem_write_out' [1] doesn't match the width of right hand side [32] in assignment in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/Cache_Dados.v' on line 68.
+Info    : Bitwidth mismatch in assignment. [CDFG-372]
+        : Width of left hand side '' [1] doesn't match the width of right hand side [32] in assignment in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/Cache_Dados.v' on line 70.
+Info    : Bitwidth mismatch in assignment. [CDFG-372]
+        : Width of left hand side '' [25] doesn't match the width of right hand side [32] in assignment in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/Cache_Dados.v' on line 71.
+Info    : Bitwidth mismatch in assignment. [CDFG-372]
+        : Width of left hand side '' [128] doesn't match the width of right hand side [32] in assignment in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/Cache_Dados.v' on line 72.
+Info    : Bitwidth mismatch in assignment. [CDFG-372]
+        : Width of left hand side '' [1] doesn't match the width of right hand side [32] in assignment in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/Cache_Dados.v' on line 70.
+Info    : Bitwidth mismatch in assignment. [CDFG-372]
+        : Width of left hand side '' [25] doesn't match the width of right hand side [32] in assignment in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/Cache_Dados.v' on line 71.
+Info    : Bitwidth mismatch in assignment. [CDFG-372]
+        : Width of left hand side '' [128] doesn't match the width of right hand side [32] in assignment in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/Cache_Dados.v' on line 72.
+Info    : Bitwidth mismatch in assignment. [CDFG-372]
+        : Width of left hand side '' [1] doesn't match the width of right hand side [32] in assignment in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/Cache_Dados.v' on line 70.
+Info    : Bitwidth mismatch in assignment. [CDFG-372]
+        : Width of left hand side '' [25] doesn't match the width of right hand side [32] in assignment in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/Cache_Dados.v' on line 71.
+Info    : Bitwidth mismatch in assignment. [CDFG-372]
+        : Width of left hand side '' [128] doesn't match the width of right hand side [32] in assignment in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/Cache_Dados.v' on line 72.
+Info    : Bitwidth mismatch in assignment. [CDFG-372]
+        : Width of left hand side '' [1] doesn't match the width of right hand side [32] in assignment in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/Cache_Dados.v' on line 70.
+Info    : Bitwidth mismatch in assignment. [CDFG-372]
+        : Width of left hand side '' [25] doesn't match the width of right hand side [32] in assignment in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/Cache_Dados.v' on line 71.
+Info    : Common subexpression eliminated. [CDFG-738]
+        : Eliminated '%bit-select%' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/Cache_Dados.v' on line 84.
+Info    : Common subexpression kept. [CDFG-739]
+        : Kept '%bit-select%' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/Cache_Dados.v' on line 124.
+Info    : Common subexpression eliminated. [CDFG-738]
+        : Eliminated '%bit-select%' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/Cache_Dados.v' on line 104.
+Info    : Common subexpression kept. [CDFG-739]
+        : Kept '%bit-select%' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/Cache_Dados.v' on line 124.
+Warning : Connected signal is wider than module port. [CDFG-464]
+        : Signal width (64) does not match width of input port 'address' (32) of instance 'cache_inst' of module 'cache_dados' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/design.v' on line 250.
+        : This may cause simulation mismatches between the original and synthesized designs.
+Warning : Module port is wider than connected signal. [CDFG-465]
+        : Signal width (1) does not match width of output port 'read_data' (64) of instance 'cache_inst' of module 'cache_dados' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/design.v' on line 250.
+        : This may cause simulation mismatches between the original and synthesized designs.
+Info    : Unused instance port. [ELABUTL-132]
+        : Unused Port 'mem_address' of instance 'cache_inst' of module 'cache_dados' inside module 'RISC_V_Processor' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/design.v' on line 250.
+        : Please check the reported scenario of unconnected instance port to ensure that it matches the design intent.
+Info    : Unused instance port. [ELABUTL-132]
+        : Unused Port 'mem_write_data' of instance 'cache_inst' of module 'cache_dados' inside module 'RISC_V_Processor' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/design.v' on line 250.
+Info    : Unused instance port. [ELABUTL-132]
+        : Unused Port 'mem_block_read_data' of instance 'cache_inst' of module 'cache_dados' inside module 'RISC_V_Processor' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/design.v' on line 250.
+Info    : Unused instance port. [ELABUTL-132]
+        : Unused Port 'mem_ready' of instance 'cache_inst' of module 'cache_dados' inside module 'RISC_V_Processor' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/design.v' on line 250.
+Info    : Unused instance port. [ELABUTL-132]
+        : Unused Port 'mem_read_out' of instance 'cache_inst' of module 'cache_dados' inside module 'RISC_V_Processor' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/design.v' on line 250.
+Info    : Unused instance port. [ELABUTL-132]
+        : Unused Port 'mem_write_out' of instance 'cache_inst' of module 'cache_dados' inside module 'RISC_V_Processor' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/design.v' on line 250.
+Info    : Elaborating Subdesign. [ELAB-2]
+        : Elaborating block 'data_memory' from file '/home/ThiagoPfeifer/Desktop/riscv_comcache/data_memory.v'.
+Info    : Processing multi-dimensional arrays. [CDFG-250]
+        : Variable 'mem' in module 'data_memory' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/data_memory.v' on line 11.
+Warning : Module port is wider than connected signal. [CDFG-465]
+        : Signal width (1) does not match width of input port 'address' (32) of instance 'datamem' of module 'data_memory' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/design.v' on line 262.
+Warning : Module port is wider than connected signal. [CDFG-465]
+        : Signal width (1) does not match width of input port 'write_data' (64) of instance 'datamem' of module 'data_memory' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/design.v' on line 262.
+Warning : Module port is wider than connected signal. [CDFG-465]
+        : Signal width (1) does not match width of output port 'block_read_data' (128) of instance 'datamem' of module 'data_memory' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/design.v' on line 262.
+Info    : Unused instance port. [ELABUTL-132]
+        : Unused Port 'mem_ready' of instance 'datamem' of module 'data_memory' inside module 'RISC_V_Processor' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/design.v' on line 262.
+Info    : Elaborating Subdesign. [ELAB-2]
+        : Elaborating block 'MEM_WB' from file '/home/ThiagoPfeifer/Desktop/riscv_comcache/MEM_WB.v'.
+Warning : Module port is wider than connected signal. [CDFG-465]
+        : Signal width (1) does not match width of input port 'read_data_in' (64) of instance 'i4' of module 'MEM_WB' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/design.v' on line 275.
+Info    : Elaborating Subdesign. [ELAB-2]
+        : Elaborating block 'ForwardingUnit' from file '/home/ThiagoPfeifer/Desktop/riscv_comcache/ForwardingUnit.v'.
+Info    : Common subexpression eliminated. [CDFG-738]
+        : Eliminated '!=' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/ForwardingUnit.v' on line 33.
+Info    : Common subexpression kept. [CDFG-739]
+        : Kept '!=' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/ForwardingUnit.v' on line 16.
+Info    : Common subexpression eliminated. [CDFG-738]
+        : Eliminated '!=' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/ForwardingUnit.v' on line 23.
+Info    : Common subexpression kept. [CDFG-739]
+        : Kept '!=' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/ForwardingUnit.v' on line 16.
+Info    : Common subexpression eliminated. [CDFG-738]
+        : Eliminated '!=' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/ForwardingUnit.v' on line 40.
+Info    : Common subexpression kept. [CDFG-739]
+        : Kept '!=' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/ForwardingUnit.v' on line 16.
+Info    : Common subexpression eliminated. [CDFG-738]
+        : Eliminated '!=' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/ForwardingUnit.v' on line 40.
+Info    : Common subexpression kept. [CDFG-739]
+        : Kept '!=' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/ForwardingUnit.v' on line 23.
+Info    : Common subexpression eliminated. [CDFG-738]
+        : Eliminated '!=' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/ForwardingUnit.v' on line 33.
+Info    : Common subexpression kept. [CDFG-739]
+        : Kept '!=' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/ForwardingUnit.v' on line 16.
+Info    : Common subexpression eliminated. [CDFG-738]
+        : Eliminated '!=' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/ForwardingUnit.v' on line 23.
+Info    : Common subexpression kept. [CDFG-739]
+        : Kept '!=' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/ForwardingUnit.v' on line 16.
+Info    : Common subexpression eliminated. [CDFG-738]
+        : Eliminated '!=' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/ForwardingUnit.v' on line 40.
+Info    : Common subexpression kept. [CDFG-739]
+        : Kept '!=' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/ForwardingUnit.v' on line 16.
+Info    : Common subexpression eliminated. [CDFG-738]
+        : Eliminated '!=' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/ForwardingUnit.v' on line 40.
+Info    : Common subexpression kept. [CDFG-739]
+        : Kept '!=' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/ForwardingUnit.v' on line 23.
+Info    : Common subexpression eliminated. [CDFG-738]
+        : Eliminated '==' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/ForwardingUnit.v' on line 23.
+Info    : Common subexpression kept. [CDFG-739]
+        : Kept '==' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/ForwardingUnit.v' on line 16.
+Info    : Common subexpression eliminated. [CDFG-738]
+        : Eliminated '==' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/ForwardingUnit.v' on line 40.
+Info    : Common subexpression kept. [CDFG-739]
+        : Kept '==' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/ForwardingUnit.v' on line 33.
+Info    : Latch inferred. Check and revisit your RTL if this is not the intended behavior. [CDFG2G-616]
+        : Latch inferred for variable 'addermuxselect' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/branching_unit.v' on line 14, column 3.
+Info    : Unused module input port. [CDFG-500]
+        : Input port 'element1' is not used in module 'RISC_V_Processor' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/design.v' on line 4.
+        : (In port definition within the module, the input port is not used in any assignment statements or conditional expressions for decision statements.
+Info    : Unused module input port. [CDFG-500]
+        : Input port 'element2' is not used in module 'RISC_V_Processor' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/design.v' on line 5.
+Info    : Unused module input port. [CDFG-500]
+        : Input port 'element3' is not used in module 'RISC_V_Processor' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/design.v' on line 6.
+Info    : Unused module input port. [CDFG-500]
+        : Input port 'element4' is not used in module 'RISC_V_Processor' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/design.v' on line 7.
+Info    : Unused module input port. [CDFG-500]
+        : Input port 'element5' is not used in module 'RISC_V_Processor' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/design.v' on line 8.
+Info    : Unused module input port. [CDFG-500]
+        : Input port 'element6' is not used in module 'RISC_V_Processor' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/design.v' on line 9.
+Info    : Unused module input port. [CDFG-500]
+        : Input port 'element7' is not used in module 'RISC_V_Processor' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/design.v' on line 10.
+Info    : Unused module input port. [CDFG-500]
+        : Input port 'element8' is not used in module 'RISC_V_Processor' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/design.v' on line 11.
+Warning : Undriven signal detected. [ELABUTL-125]
+        : Undriven bits of signal 'inst_mem[0]' in module 'instruc_mem' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/instruc_mem.v' on line 81, column 28, hid = 0.
+        : The undriven signal handling can be controlled by setting the attribute 'hdl_unconnected_value' before syn_generic command.
+Warning : Undriven signal detected. [ELABUTL-125]
+        : Undriven bits of signal 'inst_mem[1]' in module 'instruc_mem' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/instruc_mem.v' on line 81, column 28, hid = 0.
+Warning : Undriven signal detected. [ELABUTL-125]
+        : Undriven bits of signal 'inst_mem[2]' in module 'instruc_mem' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/instruc_mem.v' on line 81, column 28, hid = 0.
+Warning : Undriven signal detected. [ELABUTL-125]
+        : Undriven bits of signal 'inst_mem[3]' in module 'instruc_mem' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/instruc_mem.v' on line 81, column 28, hid = 0.
+Warning : Undriven signal detected. [ELABUTL-125]
+        : Undriven bits of signal 'inst_mem[4]' in module 'instruc_mem' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/instruc_mem.v' on line 81, column 28, hid = 0.
+Warning : Undriven signal detected. [ELABUTL-125]
+        : Undriven bits of signal 'inst_mem[5]' in module 'instruc_mem' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/instruc_mem.v' on line 81, column 28, hid = 0.
+Warning : Undriven signal detected. [ELABUTL-125]
+        : Undriven bits of signal 'inst_mem[6]' in module 'instruc_mem' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/instruc_mem.v' on line 81, column 28, hid = 0.
+Warning : Undriven signal detected. [ELABUTL-125]
+        : Undriven bits of signal 'inst_mem[7]' in module 'instruc_mem' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/instruc_mem.v' on line 81, column 28, hid = 0.
+Warning : Undriven signal detected. [ELABUTL-125]
+        : Undriven bits of signal 'inst_mem[8]' in module 'instruc_mem' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/instruc_mem.v' on line 81, column 28, hid = 0.
+Warning : Undriven signal detected. [ELABUTL-125]
+        : Undriven bits of signal 'inst_mem[9]' in module 'instruc_mem' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/instruc_mem.v' on line 81, column 28, hid = 0.
+Warning : Undriven signal detected. [ELABUTL-125]
+        : Undriven bits of signal 'inst_mem[10]' in module 'instruc_mem' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/instruc_mem.v' on line 81, column 28, hid = 0.
+Warning : Undriven signal detected. [ELABUTL-125]
+        : Undriven bits of signal 'inst_mem[11]' in module 'instruc_mem' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/instruc_mem.v' on line 81, column 28, hid = 0.
+Warning : Undriven signal detected. [ELABUTL-125]
+        : Undriven bits of signal 'inst_mem[12]' in module 'instruc_mem' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/instruc_mem.v' on line 81, column 28, hid = 0.
+Warning : Undriven signal detected. [ELABUTL-125]
+        : Undriven bits of signal 'inst_mem[13]' in module 'instruc_mem' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/instruc_mem.v' on line 81, column 28, hid = 0.
+Warning : Undriven signal detected. [ELABUTL-125]
+        : Undriven bits of signal 'inst_mem[14]' in module 'instruc_mem' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/instruc_mem.v' on line 81, column 28, hid = 0.
+Warning : Undriven signal detected. [ELABUTL-125]
+        : Undriven bits of signal 'inst_mem[15]' in module 'instruc_mem' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/instruc_mem.v' on line 81, column 28, hid = 0.
+Warning : Undriven signal detected. [ELABUTL-125]
+        : Undriven bits of signal 'inst_mem[16]' in module 'instruc_mem' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/instruc_mem.v' on line 81, column 28, hid = 0.
+Warning : Undriven signal detected. [ELABUTL-125]
+        : Undriven bits of signal 'inst_mem[17]' in module 'instruc_mem' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/instruc_mem.v' on line 81, column 28, hid = 0.
+Warning : Undriven signal detected. [ELABUTL-125]
+        : Undriven bits of signal 'inst_mem[18]' in module 'instruc_mem' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/instruc_mem.v' on line 81, column 28, hid = 0.
+Warning : Undriven signal detected. [ELABUTL-125]
+        : Undriven bits of signal 'inst_mem[19]' in module 'instruc_mem' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/instruc_mem.v' on line 81, column 28, hid = 0.
+Warning : Unconnected instance input port detected. [ELABUTL-124]
+        : Unconnected input port 'mem_block_read_data' of instance 'cache_inst' of module 'cache_dados' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/design.v' on line 250, column 24, hid = 0.
+        : Run check_design to check 'Undriven Port(s)/Pin(s)' section for all unconnected instance input ports. It is better to double confirm with designer these unconnected instance input port are expected. During syn_gen the unconnected instance input ports are controlled by attribute 'hdl_unconnected_value', the default value is 0.
+Warning : Unconnected instance input port detected. [ELABUTL-124]
+        : Unconnected input port 'mem_ready' of instance 'cache_inst' of module 'cache_dados' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/design.v' on line 250, column 24, hid = 0.
+Warning : Undriven module input port. [ELABUTL-127]
+        : Undriven bits of port 'address' of instance 'datamem' of module 'data_memory' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/design.v' on line 262, column 23, hid = 0.
+        : Run check_design to check 'Undriven Port(s)/Pin(s)' section for all undriven module input ports. It is better to double confirm with designer if these undriven ports are expected. During syn_gen the undriven ports are controlled by attribute 'hdl_unconnected_value', the default value is 0.
+Warning : Undriven module input port. [ELABUTL-127]
+        : Undriven bits of port 'write_data' of instance 'datamem' of module 'data_memory' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/design.v' on line 262, column 23, hid = 0.
+Warning : Undriven module input port. [ELABUTL-127]
+        : Undriven bits of port 'mem_write' of instance 'datamem' of module 'data_memory' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/design.v' on line 262, column 23, hid = 0.
+Warning : Undriven module input port. [ELABUTL-127]
+        : Undriven bits of port 'mem_read' of instance 'datamem' of module 'data_memory' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/design.v' on line 262, column 23, hid = 0.
+Warning : Undriven module input port. [ELABUTL-127]
+        : Undriven bits of port 'read_data_in' of instance 'i4' of module 'MEM_WB' in file '/home/ThiagoPfeifer/Desktop/riscv_comcache/design.v' on line 275, column 13, hid = 0.
+Warning : Signal or variable has multiple drivers. [CDFG2G-622]
+        : 'flush' in module 'RISC_V_Processor'.
+        : This may cause simulation mismatches between the original and synthesized designs.
+Info    : Done Elaborating Design. [ELAB-3]
+        : Done elaborating 'RISC_V_Processor'.
+Checking for analog nets...
+Check completed for analog nets.
+Starting remove undriven muxes [v2.0] (stage: post_elab, startdef: RISC_V_Processor, recur: true)
+Completed remove undriven muxes (accepts: 82, rejects: 0, runtime: 0.123s)
+Starting remove undriven datapath [v1.0] (stage: post_elab, startdef: RISC_V_Processor, recur: true)
+Completed remove undriven datapath (accepts: 2, rejects: 0, runtime: 0.003s)
+Starting clip mux common data inputs [v1.0] (stage: post_elab, startdef: RISC_V_Processor, recur: true)
+Completed clip mux common data inputs (accepts: 0, rejects: 0, runtime: 0.032s)
+Starting clip the non-user hierarchies [v2.0] (stage: post_elab, startdef: RISC_V_Processor, recur: true)
+Completed clip the non-user hierarchies (accepts: 0, rejects: 0, runtime: 0.003s)
+Starting constant mux bdd optimization [v1.0] (stage: post_elab, startdef: RISC_V_Processor, recur: true)
+Completed constant mux bdd optimization (accepts: 0, rejects: 0, runtime: 0.011s)
+Checking for source RTL...
+Check completed for source RTL.
+        Computing net loads.
+UM:   flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:*                                                                   elaborate
+@file(basic.tcl) 79: puts "Runtime & Memory after 'read_hdl'"
+Runtime & Memory after 'read_hdl'
+@file(basic.tcl) 80: time_info Elaboration
+stamp 'Elaboration' being created for table 'default'
+
+  Total Time (Wall) |  Stage Time (Wall)  |   % (Wall)   |    Date - Time     |  Memory   | Stage
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:00) |  00:00:00(00:00:00) |   0.0(  0.0) |   21:44:18 (Jul17) |   95.4 MB | init
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:01:24(00:01:19) |  00:01:19(00:01:19) | 100.0(100.0) |   21:45:37 (Jul17) |   1.11 GB | Elaboration
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+Number of threads: 8 * 1   (id: default, time_info v1.57)
+Info: (*N*) indicates data that was populated from previously saved time_info database
+Info: CPU time includes time of parent + longest thread
+@file(basic.tcl) 84: check_design -unresolved
+
+
+ 	 Check Design Report (c)
+	 ------------------- 
+
+  Unresolved References & Empty Modules
+  ------------------------------------- 
+No unresolved references in design 'RISC_V_Processor'
+
+No empty modules in design 'RISC_V_Processor'
+
+  Done Checking the design.
+@file(basic.tcl) 90: read_sdc /home/ThiagoPfeifer/Desktopp/processador.sdc
+Error: Unable to find /home/ThiagoPfeifer/Desktopp/processador.sdc
+#@ End verbose source ./basic.tcl
+Failed on read_sdc
+Encountered problems processing file: basic.tcl
+WARNING: This version of the tool is 1679 days old.
+@genus:root: 2> report_timing
+Warning : A combinational loop has been found. [TIM-20]
+        : The design 'RISC_V_Processor' contains the following combinational loop:
+          immextr/mux_imm_data_9_13/z[11]
+          immextr/mux_imm_data_9_13/in_2[11]
+          immextr/mux_imm_data_9_13/in_2[11]
+          immextr/mux_imm_data_9_13/g1/data2
+          immextr/mux_imm_data_9_13/g1/z
+          immextr/mux_imm_data_9_13/z[11]
+          immextr/mux_imm_data_9_13/z[11]
+The combinational loop has been disabled.
+        : Run 'check_timing_intent' to get the detailed information By default Genus inserts cdn_loop_breaker instances to break combinational feedback loops during timing analysis. You can use command 'report cdn_loop_breaker' to report all the loop breakers in the design. You can use command 'remove_cdn_loop_breaker' to remove the loop breakers. Once the loop breaker instances inserted by Genus are removed, the user can break the loops manually using command set_disable_timing.
+Warning : A combinational loop has been found. [TIM-20]
+        : The design 'RISC_V_Processor' contains the following combinational loop:
+          immextr/mux_imm_data_9_13/z[10]
+          immextr/mux_imm_data_9_13/in_2[10]
+          immextr/mux_imm_data_9_13/in_2[10]
+          immextr/mux_imm_data_9_13/g2/data2
+          immextr/mux_imm_data_9_13/g2/z
+          immextr/mux_imm_data_9_13/z[10]
+          immextr/mux_imm_data_9_13/z[10]
+The combinational loop has been disabled.
+Warning : A combinational loop has been found. [TIM-20]
+        : The design 'RISC_V_Processor' contains the following combinational loop:
+          immextr/mux_imm_data_9_13/z[9]
+          immextr/mux_imm_data_9_13/in_2[9]
+          immextr/mux_imm_data_9_13/in_2[9]
+          immextr/mux_imm_data_9_13/g3/data2
+          immextr/mux_imm_data_9_13/g3/z
+          immextr/mux_imm_data_9_13/z[9]
+          immextr/mux_imm_data_9_13/z[9]
+The combinational loop has been disabled.
+Warning : A combinational loop has been found. [TIM-20]
+        : The design 'RISC_V_Processor' contains the following combinational loop:
+          immextr/mux_imm_data_9_13/z[8]
+          immextr/mux_imm_data_9_13/in_2[8]
+          immextr/mux_imm_data_9_13/in_2[8]
+          immextr/mux_imm_data_9_13/g4/data2
+          immextr/mux_imm_data_9_13/g4/z
+          immextr/mux_imm_data_9_13/z[8]
+          immextr/mux_imm_data_9_13/z[8]
+The combinational loop has been disabled.
+Warning : A combinational loop has been found. [TIM-20]
+        : The design 'RISC_V_Processor' contains the following combinational loop:
+          immextr/mux_imm_data_9_13/z[7]
+          immextr/mux_imm_data_9_13/in_2[7]
+          immextr/mux_imm_data_9_13/in_2[7]
+          immextr/mux_imm_data_9_13/g5/data2
+          immextr/mux_imm_data_9_13/g5/z
+          immextr/mux_imm_data_9_13/z[7]
+          immextr/mux_imm_data_9_13/z[7]
+The combinational loop has been disabled.
+Warning : A combinational loop has been found. [TIM-20]
+        : The design 'RISC_V_Processor' contains the following combinational loop:
+          immextr/mux_imm_data_9_13/z[6]
+          immextr/mux_imm_data_9_13/in_2[6]
+          immextr/mux_imm_data_9_13/in_2[6]
+          immextr/mux_imm_data_9_13/g6/data2
+          immextr/mux_imm_data_9_13/g6/z
+          immextr/mux_imm_data_9_13/z[6]
+          immextr/mux_imm_data_9_13/z[6]
+The combinational loop has been disabled.
+Warning : A combinational loop has been found. [TIM-20]
+        : The design 'RISC_V_Processor' contains the following combinational loop:
+          immextr/mux_imm_data_9_13/z[5]
+          immextr/mux_imm_data_9_13/in_2[5]
+          immextr/mux_imm_data_9_13/in_2[5]
+          immextr/mux_imm_data_9_13/g7/data2
+          immextr/mux_imm_data_9_13/g7/z
+          immextr/mux_imm_data_9_13/z[5]
+          immextr/mux_imm_data_9_13/z[5]
+The combinational loop has been disabled.
+Warning : A combinational loop has been found. [TIM-20]
+        : The design 'RISC_V_Processor' contains the following combinational loop:
+          immextr/mux_imm_data_9_13/z[4]
+          immextr/mux_imm_data_9_13/in_2[4]
+          immextr/mux_imm_data_9_13/in_2[4]
+          immextr/mux_imm_data_9_13/g8/data2
+          immextr/mux_imm_data_9_13/g8/z
+          immextr/mux_imm_data_9_13/z[4]
+          immextr/mux_imm_data_9_13/z[4]
+The combinational loop has been disabled.
+Warning : A combinational loop has been found. [TIM-20]
+        : The design 'RISC_V_Processor' contains the following combinational loop:
+          immextr/mux_imm_data_9_13/z[3]
+          immextr/mux_imm_data_9_13/in_2[3]
+          immextr/mux_imm_data_9_13/in_2[3]
+          immextr/mux_imm_data_9_13/g9/data2
+          immextr/mux_imm_data_9_13/g9/z
+          immextr/mux_imm_data_9_13/z[3]
+          immextr/mux_imm_data_9_13/z[3]
+The combinational loop has been disabled.
+Warning : A combinational loop has been found. [TIM-20]
+        : The design 'RISC_V_Processor' contains the following combinational loop:
+          immextr/mux_imm_data_9_13/z[2]
+          immextr/mux_imm_data_9_13/in_2[2]
+          immextr/mux_imm_data_9_13/in_2[2]
+          immextr/mux_imm_data_9_13/g10/data2
+          immextr/mux_imm_data_9_13/g10/z
+          immextr/mux_imm_data_9_13/z[2]
+          immextr/mux_imm_data_9_13/z[2]
+The combinational loop has been disabled.
+Warning : A combinational loop has been found. [TIM-20]
+        : The design 'RISC_V_Processor' contains the following combinational loop:
+          immextr/mux_imm_data_9_13/z[1]
+          immextr/mux_imm_data_9_13/in_2[1]
+          immextr/mux_imm_data_9_13/in_2[1]
+          immextr/mux_imm_data_9_13/g11/data2
+          immextr/mux_imm_data_9_13/g11/z
+          immextr/mux_imm_data_9_13/z[1]
+          immextr/mux_imm_data_9_13/z[1]
+The combinational loop has been disabled.
+Warning : A combinational loop has been found. [TIM-20]
+        : The design 'RISC_V_Processor' contains the following combinational loop:
+          immextr/mux_imm_data_9_13/z[0]
+          immextr/mux_imm_data_9_13/in_2[0]
+          immextr/mux_imm_data_9_13/in_2[0]
+          immextr/mux_imm_data_9_13/g12/data2
+          immextr/mux_imm_data_9_13/g12/z
+          immextr/mux_imm_data_9_13/z[0]
+          immextr/mux_imm_data_9_13/z[0]
+The combinational loop has been disabled.
+        Computing net loads.
+        Tracing clock networks.
+        Levelizing the circuit.
+        Computing delays.
+        Computing arrivals and requireds.
+Warning : Timing problems have been detected in this design. [TIM-11]
+        : The design is 'RISC_V_Processor'.
+        : Use 'check_timing_intent' or 'report timing -lint' to report more information.
+============================================================
+  Generated by:           Genus(TM) Synthesis Solution 20.10-p001_1
+  Generated on:           Jul 17 2025  09:59:04 pm
+  Module:                 RISC_V_Processor
+  Operating conditions:   PVT_1P08V_125C 
+  Interconnect mode:      global
+  Area mode:              timing library
+============================================================
+
+Some unconstrained paths have not been displayed.
+Use -unconstrained or set the root attribute 'timing_report_unconstrained' to 'true' to see only these unconstrained paths.
+
+@genus:root: 3> exit
